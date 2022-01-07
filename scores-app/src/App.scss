@@ -1,0 +1,21 @@
+@import "./components/index.scss";
+
+body {
+  font-family: "Inconsolata", monospace;
+  font-weight: 700;
+  font-size: 24px;
+  z-index: 1;
+  text-align: center;
+}
+
+.app {
+  width: 100%;
+}
+
+.app-content {
+  margin: auto;
+}
+
+.site-content {
+  padding-top: 110px;
+}

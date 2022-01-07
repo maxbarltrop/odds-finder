@@ -1,0 +1,32 @@
+.header {
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  background-color: white;
+  grid-template-columns: 1fr 5fr 1fr;
+  font-weight: 200;
+}
+
+.header-title {
+  font-weight: 100;
+  font-size: 50px;
+}
+
+.header-sign-out {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background-color 0.4s ease-in-out;
+}
+
+.header-sign-out:hover {
+  cursor: pointer;
+  background-color: #dfdfdf;
+}
