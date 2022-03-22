@@ -5,9 +5,11 @@
   display: grid;
   flex-direction: row;
   align-items: center;
-  background-color: white;
+  background-color: transparent;
   grid-template-columns: 1fr 5fr 1fr;
   font-weight: 200;
+  min-width: 400px;
+  color: #eeeeee;
 }
 
 .header-title {
@@ -23,10 +25,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  transition: background-color 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .header-sign-out:hover {
   cursor: pointer;
-  background-color: #dfdfdf;
+  background-color: #acacac;
+  color: black;
 }

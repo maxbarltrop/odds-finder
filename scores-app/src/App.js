@@ -7,7 +7,6 @@ import Main from "./components/Main";
 import SignIn from "./components/SignIn";
 import Header from "./components/Header";
 import Background from "./components/Background";
-import { useEffect } from "react";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBTic5V4Q8RIndKkpBFdRZmTmwCu_Y-CKw",
@@ -24,17 +23,15 @@ const auth = firebase.auth();
 function App() {
   const [user] = useAuthState(auth);
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <div className="app">
       <section>
         <Header auth={auth} />
       </section>
       <div className="site-content">
-        <section>{user ? <Main /> : <SignIn auth={auth} />}</section>
+        <section>
+          {user ? <Main user={user} /> : <SignIn auth={auth} />}
+        </section>
       </div>
       <Background />
     </div>

@@ -15,7 +15,7 @@ export const getEvents = async (competitionKey) => {
   //     .catch((err) => err);
 };
 
-export const getCompetitions = (sportKey) => {
+export const getCompetitions = async (sportKey) => {
   return COMPETITIONS;
   //   return axios
   //     .get(`${BASE_URL}/sports/${sportKey}`, config)

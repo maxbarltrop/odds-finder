@@ -1,0 +1,18 @@
+.sports-list-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: background-color 0.3s ease-in-out;
+  transition: margin 0.3s ease-in-out;
+}
+
+.sports-list-item:hover {
+  background-color: rgba(180, 180, 180);
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.sports-text {
+  padding-left: 20px;
+  text-align: left;
+}

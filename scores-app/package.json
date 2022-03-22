@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.7",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -15,8 +17,11 @@
     "react-firebase-hooks": "^4.0.1",
     "react-scripts": "5.0.0",
     "react-tsparticles": "^1.38.0",
+    "sass": "^1.47.0",
     "semantic-ui-react": "^2.0.4",
-    "web-vitals": "^2.1.2"
+    "util": "^0.12.4",
+    "web-vitals": "^2.1.2",
+    "webpack": "^5.65.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,5 +46,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fs": "^0.0.1-security"
   }
 }

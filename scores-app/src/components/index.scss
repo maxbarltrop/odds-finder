@@ -5,3 +5,55 @@
 @import "./Competitions/Competitions.scss";
 @import "./Events/Events.scss";
 @import "./Sports/Sports.scss";
+@import "./Loader/Loader.scss";
+
+.category {
+  border-radius: 10px;
+  max-height: 800px;
+  min-width: 200px;
+  border: 1px solid rgba(150, 150, 150, 0.4);
+  padding: 20px;
+  box-shadow: 1px 1px rgba(150, 150, 150, 0.4);
+  max-height: 80vh;
+  overflow-y: auto;
+  opacity: 0.9;
+  background-color: #444455;
+  color: white;
+}
+
+.category-title {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+}
+
+.item {
+  margin: 0 0 10px 0;
+  border-radius: 15px;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+  box-shadow: 2px 1px rgba(150, 150, 150, 0.5);
+  padding: 10px 25px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: 300;
+  min-height: 80px;
+}
+
+.list {
+  overflow-y: auto;
+  min-height: 200px;
+}
+
+.icon {
+  width: min(40px, calc(2vw + 10px));
+}
+
+.category-icon {
+  width: 50px;
+  margin-right: 10px;
+}

@@ -7,6 +7,11 @@ const Background = () => {
       <Particles
         id="tsparticles"
         options={{
+          background: {
+            color: {
+              value: "#333344",
+            },
+          },
           fpsLimit: 30,
           particles: {
             color: {
@@ -16,7 +21,7 @@ const Background = () => {
               color: "#aaaaaa",
               distance: 100,
               enable: true,
-              opacity: 0.3,
+              opacity: 0.1,
               width: 1,
             },
             collisions: {
@@ -38,7 +43,7 @@ const Background = () => {
               value: 80,
             },
             opacity: {
-              value: 0.35,
+              value: 0.1,
             },
             size: {
               random: true,
