@@ -1,4 +1,4 @@
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .events-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -12,6 +12,10 @@
     display: grid;
     grid-template-columns: 1fr;
   }
+}
+
+#events-container {
+  min-width: 500px;
 }
 
 .event-list-item {
@@ -31,4 +35,16 @@
 .fav-star {
   width: 25px;
   padding-right: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.selected {
+  opacity: 0.8;
+}
+.unselected {
+  opacity: 0.25;
+}
+.unselected:hover {
+  cursor: pointer;
+  opacity: 1;
 }

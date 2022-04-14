@@ -13,11 +13,14 @@ class Main extends React.Component {
       favorites: [],
       error: null,
     };
-    this.fetchFavorites(props.user.user);
+    if (this.props.signedIn) {
+      this.fetchFavorites(props.user.user);
+    }
   }
 
   fetchFavorites() {
     this.setState({ error: null });
+    if (!this.props.signedIn) return;
     getFavorites(this.props.user)
       .then((data) => {
         this.setState({ favorites: data });
@@ -36,8 +39,11 @@ class Main extends React.Component {
   }
 
   newFavorite(fav) {
-    addFavorite(this.props.user.user, fav).then((f) => {
-      this.setState({ favorites: [...this.state.favorites, f] });
+    addFavorite(this.props.user, fav).then((result) => {
+      if (result) {
+        this.setState({ favorites: [...this.state.favorites, fav] });
+        console.log(this.state.favorites);
+      }
     });
   }
 
@@ -54,6 +60,7 @@ class Main extends React.Component {
             competitionKey={this.state.competition}
             favorites={this.state.favorites}
             newFavorite={(f) => this.newFavorite(f)}
+            signedIn={this.props.signedIn}
           />
         </div>
       </div>

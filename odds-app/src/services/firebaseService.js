@@ -27,5 +27,5 @@ export const addFavorite = async (user, fav) => {
     team_key: fav.team_key,
     user_key: user.uid,
   });
-  return newDoc ? newDoc.data() : null;
+  return newDoc ? true : null;
 };

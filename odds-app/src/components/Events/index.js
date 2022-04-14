@@ -5,7 +5,7 @@ import EVENTS from "../../assets/images/event.svg";
 import { getMoneyLines } from "./util";
 import Loader from "../Loader";
 
-const Events = ({ competitionKey, favorites }) => {
+const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
   var [loading, setLoading] = useState(false);
   var [error, setError] = useState(null);
   var [events, setEvents] = useState(null);
@@ -45,19 +45,30 @@ const Events = ({ competitionKey, favorites }) => {
     }, 1000);
   }, [competitionKey]);
 
+  const addFavorite = (teamKey) => {
+    if (!signedIn) return;
+    newFavorite({ competition_key: competitionKey, team_key: teamKey });
+  };
+
   const renderList = () => {
     if (loading) return <Loader />;
     if (!events) return null;
     return (
       <div className="list events-list">
         {events.map((e) => (
-          <EventItem event={e} key={e.key} favorites={favorites} />
+          <EventItem
+            event={e}
+            key={e.key}
+            favorites={favorites}
+            addFavorite={(tk) => addFavorite(tk)}
+            signedIn={signedIn}
+          />
         ))}
       </div>
     );
   };
   return (
-    <div className="events-container category">
+    <div className="category" id="events-container">
       <div className="category-title">
         <img className="category-icon" src={EVENTS} alt="sports-logo" />
         Events
