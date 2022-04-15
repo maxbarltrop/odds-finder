@@ -28,6 +28,7 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
       <Tooltip
         title={signedIn ? "Favorite This Team" : "Sign in to add favorites"}
         placement="left"
+        id="fav-tooltip"
       >
         <img
           className="fav-star unselected"

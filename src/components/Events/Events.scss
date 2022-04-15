@@ -1,4 +1,4 @@
-@media (min-width: 1200px) {
+@media (min-width: 1300px) {
   .events-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -7,7 +7,7 @@
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .events-list {
     display: grid;
     grid-template-columns: 1fr;
@@ -47,4 +47,8 @@
 .unselected:hover {
   cursor: pointer;
   opacity: 1;
+}
+
+#fav-tooltip {
+  font-size: 20px;
 }
