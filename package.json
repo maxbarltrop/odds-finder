@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider --optimize_for_size --max_old_space_size=2560 start",
-    "build": "node --optimize_for_size --max_old_space_size=460 build",
+    "build": "node --optimize_for_size --max_old_space_size=3072 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
