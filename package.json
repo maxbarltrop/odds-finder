@@ -6,20 +6,20 @@
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.7",
-    "axios": "^0.24.0",
+    "axios": "^0.21.1",
     "firebase": "^9.6.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-firebase-hooks": "^4.0.1",
-    "react-scripts": "5.0.0",
+    "react-scripts": "4.0.3",
     "react-tsparticles": "^1.38.0",
-    "sass": "^1.47.0",
+    "sass": "^1.32.12",
     "semantic-ui-react": "^2.0.4",
     "util": "^0.12.4",
-    "webpack": "^5.65.0"
+    "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
