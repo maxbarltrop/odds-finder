@@ -19,7 +19,7 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider --optimize_for_size --max_old_space_size=2560 start",
+    "start": "react-scripts --openssl-legacy-provider --optimize_for_size --max_old_space_size=460 start",
     "build": "node --max_old_space_size=2560 node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
