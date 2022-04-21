@@ -29,3 +29,14 @@ export const addFavorite = async (user, fav) => {
   });
   return newDoc ? true : null;
 };
+
+export const removeFavorite = async (user, fav) => {
+  const firestore = getFirestore();
+  const favoritesCollection = collection(firestore, "favorites");
+  const newDoc = await addDoc(favoritesCollection, {
+    competition_key: fav.competition_key,
+    team_key: fav.team_key,
+    user_key: user.uid,
+  });
+  return newDoc ? true : null;
+};
