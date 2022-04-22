@@ -11,7 +11,7 @@ const Competition = ({ sportKey, setCompetition }) => {
 
   const parseCompetitions = (compList) => {
     let parsed = [];
-    for (let country of compList) {
+    for (let country of compList.categories) {
       for (let comp of country.competitions) {
         parsed.push({
           country: country.key,

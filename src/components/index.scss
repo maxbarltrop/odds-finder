@@ -6,14 +6,16 @@
 @import "./Events/Events.scss";
 @import "./Sports/Sports.scss";
 @import "./Loader/Loader.scss";
+@import "./Favorites/Favorites.scss";
 
 .category {
   border-radius: 10px;
   max-height: 800px;
-  min-width: 200px;
+  min-width: 300px;
   border: 1px solid rgba(150, 150, 150, 0.4);
   padding: 20px;
   box-shadow: 1px 1px rgba(150, 150, 150, 0.4);
+  min-height: 300px;
   max-height: 80vh;
   overflow-y: auto;
   opacity: 0.9;

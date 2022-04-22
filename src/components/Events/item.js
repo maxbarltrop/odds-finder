@@ -14,7 +14,7 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
     }
     return false;
   };
-  const FavStar = ({ teamKey }) => {
+  const FavStar = ({ teamKey, name }) => {
     if (isFavorite(teamKey)) {
       return (
         <img
@@ -34,7 +34,7 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
           className="fav-star unselected"
           src={Star}
           alt="Select Favorite"
-          onClick={() => addFavorite(teamKey)}
+          onClick={() => addFavorite(teamKey, name)}
         />
       </Tooltip>
     );
@@ -51,15 +51,32 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
   const Team = ({ name, teamKey, odds }) => {
     return (
       <div className="event-team">
-        <FavStar teamKey={teamKey} />
+        <FavStar teamKey={teamKey} name={name} />
         <Name name={name} />
         <Odds odds={odds} />
       </div>
     );
   };
 
+  const Time = ({ time }) => {
+    const options = {
+      weekday: "long",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    const formatTime = new Date(time);
+    return (
+      <div className="time-display">
+        {formatTime.toLocaleString("en-US", options)}
+      </div>
+    );
+  };
+
   return (
     <div className="item event-list-item">
+      <Time time={event.time} />
       <Team
         name={event.homeName}
         teamKey={event.homeKey}

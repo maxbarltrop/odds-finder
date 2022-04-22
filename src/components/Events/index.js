@@ -13,7 +13,7 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
   useEffect(() => {
     const parseEvents = (eventList) => {
       let parsed = [];
-      for (let event of eventList) {
+      for (let event of eventList.events) {
         if (event.home && event.away && event.status === "TRADING") {
           const odds = getMoneyLines(event.markets);
           parsed.push({
@@ -45,9 +45,13 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
     }, 1000);
   }, [competitionKey]);
 
-  const addFavorite = (teamKey) => {
+  const addFavorite = (teamKey, name) => {
     if (!signedIn) return;
-    newFavorite({ competition_key: competitionKey, team_key: teamKey });
+    newFavorite({
+      competition_key: competitionKey,
+      team_key: teamKey,
+      name: name,
+    });
   };
 
   const renderList = () => {
@@ -60,7 +64,7 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
             event={e}
             key={e.key}
             favorites={favorites}
-            addFavorite={(tk) => addFavorite(tk)}
+            addFavorite={(tk, name) => addFavorite(tk, name)}
             signedIn={signedIn}
           />
         ))}

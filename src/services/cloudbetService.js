@@ -8,19 +8,17 @@ const config = {
 };
 
 export const getEvents = async (competitionKey) => {
-  return EVENTS;
-  //   return axios
-  //     .get(`${BASE_URL}/competitions/${competitionKey}`, config)
-  //     .then((response) => response.data)
-  //     .catch((err) => err);
+  return axios
+    .get(`${BASE_URL}/competitions/${competitionKey}`, config)
+    .then((response) => response.data)
+    .catch((err) => err);
 };
 
 export const getCompetitions = async (sportKey) => {
-  return COMPETITIONS;
-  //   return axios
-  //     .get(`${BASE_URL}/sports/${sportKey}`, config)
-  //     .then((response) => response.data)
-  //     .catch((ignore) => null);
+  return axios
+    .get(`${BASE_URL}/sports/${sportKey}`, config)
+    .then((response) => response.data)
+    .catch((ignore) => null);
 };
 
 export const getSports = (sportKey) => {
