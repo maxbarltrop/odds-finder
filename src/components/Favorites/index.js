@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import _ from "lodash";
 import { getEvents } from "../../services/cloudbetService";
+import { getMoneyLines, timeFormatter } from "../Events/util";
+import FavStar from "../../assets/images/star.svg";
+import Delete from "./menu";
+import CircularProgress from "@mui/material/CircularProgress";
 
 export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     if (favorites && favorites.length > 0) {
       findFavoritesEvents(favorites);
     }
@@ -21,8 +27,51 @@ export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
     let newList = [];
     await Promise.all(keyList.map((key) => getEvents(key)))
       .then((res) => res.forEach((comp) => newList.push(...comp.events)))
-      .catch((err) => setError(err));
+      .catch((err) => {
+        setError(err);
+        setLoading(false);
+      });
     setEvents(newList);
+    setLoading(false);
+  };
+
+  const parseOdds = (num) => {
+    return parseInt(num) > 0 ? `+${num}` : num;
+  };
+
+  const UpcomingGame = ({ event }) => {
+    const FavTeamGame = ({ name, odds, isFav }) => {
+      return (
+        <React.Fragment>
+          <div
+            className={`event-team-name ${isFav ? "fav-upcoming-bold" : ""}`}
+          >
+            {name}
+          </div>
+          <div className="event-odds">{parseOdds(odds)}</div>
+        </React.Fragment>
+      );
+    };
+    const odds = getMoneyLines(event.markets);
+    return (
+      <div className="fav-upcoming">
+        <div className="time-display">{timeFormatter(event.cutoffTime)}</div>
+        <div className="fav-upcoming-team">
+          <FavTeamGame
+            name={event.home.name}
+            odds={odds.home}
+            isFav={favorites.find((f) => f.team_key === event.home.key)}
+          />
+        </div>
+        <div className="fav-upcoming-team">
+          <FavTeamGame
+            name={event.away.name}
+            odds={odds.away}
+            isFav={favorites.find((f) => f.team_key === event.away.key)}
+          />
+        </div>
+      </div>
+    );
   };
 
   const Team = ({ team }) => {
@@ -34,12 +83,24 @@ export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
           (e.away && e.away.key === team.team_key)
       );
     }
-    if (upcoming) {
-      console.log(upcoming);
+    if (!upcoming) {
+      return null;
     }
     return (
       <div className="fav-team">
-        <div className="fav-team-title">{team.name}</div>
+        <div className="fav-team-title-container">
+          <div />
+          <div className="fav-team-title">{team.name}</div>
+          <Delete removeFavorite={() => removeFavorite(team)} />
+        </div>
+        {upcoming ? (
+          <React.Fragment>
+            <div className="fav-upcoming-text">Upcoming game:</div>
+            <UpcomingGame event={upcoming} />{" "}
+          </React.Fragment>
+        ) : (
+          <div className="fav-upcoming-text">No upcoming game.</div>
+        )}
       </div>
     );
   };
@@ -51,11 +112,21 @@ export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
     if (favorites.length === 0) {
       return "Search for events to add favorites.";
     }
-    return favorites.map((f) => <Team team={f} />);
+    if (loading) {
+      return (
+        <div className="fav-loader">
+          <CircularProgress size="40%" color="inherit" />
+        </div>
+      );
+    }
+    return favorites.map((f) => <Team team={f} key={f.team_key} />);
   }
   return (
     <div className="favorites">
-      <div className="favorites-title">Favorite Teams</div>
+      <div className="favorites-title">
+        <img src={FavStar} className="fav-title-star" alt={"star"}></img>
+        Favorite Teams
+      </div>
       <div className="favorites-content">{content()}</div>
     </div>
   );

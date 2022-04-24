@@ -49,7 +49,10 @@ class Main extends React.Component {
   }
 
   removeFavorite(fav) {
-    deleteFavorite(fav);
+    deleteFavorite(this.props.user, fav);
+    let { favorites } = this.state;
+    const newSet = favorites.filter((f) => f.team_key !== fav.team_key);
+    this.setState({ favorites: newSet });
   }
 
   render() {

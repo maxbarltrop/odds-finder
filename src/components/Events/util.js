@@ -26,3 +26,15 @@ export const getMoneyLines = (markets) => {
   );
   return { home, away };
 };
+
+export const timeFormatter = (time) => {
+  const options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+  const formatTime = new Date(time);
+  return formatTime.toLocaleString("en-US", options);
+};

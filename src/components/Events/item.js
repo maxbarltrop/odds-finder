@@ -2,6 +2,7 @@ import React from "react";
 import Star from "../../assets/images/star.svg";
 import Starred from "../../assets/images/starred.svg";
 import Tooltip from "@mui/material/Tooltip";
+import { timeFormatter } from "./util";
 
 const parseOdds = (num) => {
   return parseInt(num) > 0 ? `+${num}` : num;
@@ -59,19 +60,7 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
   };
 
   const Time = ({ time }) => {
-    const options = {
-      weekday: "long",
-      month: "long",
-      day: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-    };
-    const formatTime = new Date(time);
-    return (
-      <div className="time-display">
-        {formatTime.toLocaleString("en-US", options)}
-      </div>
-    );
+    return <div className="time-display">{timeFormatter(time)}</div>;
   };
 
   return (

@@ -32,10 +32,10 @@ export const addFavorite = async (user, fav) => {
   return newDoc ? true : null;
 };
 
-export const deleteFavorite = async (fav) => {
+export const deleteFavorite = async (user, fav) => {
   const userFavoritesQuery = query(
     collection(getFirestore(), "favorites"),
-    where("user_key", "==", fav.user_key),
+    where("user_key", "==", user.uid),
     where("team_key", "==", fav.team_key)
   );
   const snap = await getDocs(userFavoritesQuery);
