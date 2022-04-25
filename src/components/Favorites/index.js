@@ -6,7 +6,12 @@ import FavStar from "../../assets/images/star.svg";
 import Delete from "./menu";
 import CircularProgress from "@mui/material/CircularProgress";
 
-export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
+export const Favorites = ({
+  favorites,
+  removeFavorite,
+  signedIn,
+  loadingFavorites,
+}) => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -112,10 +117,10 @@ export const Favorites = ({ favorites, removeFavorite, signedIn }) => {
     if (favorites.length === 0) {
       return "Search for events to add favorites.";
     }
-    if (loading) {
+    if (loading || loadingFavorites) {
       return (
         <div className="fav-loader">
-          <CircularProgress size="40%" color="inherit" />
+          <CircularProgress size="50%" color="inherit" />
         </div>
       );
     }

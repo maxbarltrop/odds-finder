@@ -14,6 +14,7 @@ class Main extends React.Component {
       competition: null,
       favorites: [],
       error: null,
+      loading: false,
     };
     if (this.props.signedIn) {
       this.fetchFavorites(props.user.user);
@@ -21,14 +22,14 @@ class Main extends React.Component {
   }
 
   fetchFavorites() {
-    this.setState({ error: null });
+    this.setState({ error: null, loading: true });
     if (!this.props.signedIn) return;
     getFavorites(this.props.user)
       .then((data) => {
-        this.setState({ favorites: data });
+        this.setState({ favorites: data, loading: false });
       })
       .catch((ignore) => {
-        this.setState({ error: "Unable to fetch favorites" });
+        this.setState({ error: "Unable to fetch favorites", loading: false });
       });
   }
 
@@ -62,6 +63,7 @@ class Main extends React.Component {
           favorites={this.state.favorites}
           removeFavorite={(f) => this.removeFavorite(f)}
           signedIn={this.props.signedIn}
+          loadingFavorites={this.state.loading}
         />
         <div className="main-container">
           <Sports setSport={(s) => this.setSport(s)} />
