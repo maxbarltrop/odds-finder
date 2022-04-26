@@ -1,4 +1,4 @@
-#Odds Finder (React, Firebase)
+# Odds Finder (React, Firebase)
 
 Find event betting odds for major sports using the [Cloudbet API](https://www.cloudbet.com/api/) 
 
