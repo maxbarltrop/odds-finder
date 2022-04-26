@@ -1,5 +1,5 @@
 .header {
-  height: 100px;
+  min-height: 100px;
   width: 100%;
   display: grid;
   flex-direction: row;
@@ -9,6 +9,7 @@
   font-weight: 200;
   min-width: 400px;
   color: #eeeeee;
+  margin-bottom: 5px;
 }
 
 .header-title {

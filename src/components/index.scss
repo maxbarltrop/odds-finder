@@ -13,6 +13,11 @@ a {
   color: white;
 }
 
+.main {
+  display: grid;
+  grid-template-rows: auto;
+}
+
 .category {
   border-radius: 10px;
   max-height: 800px;
