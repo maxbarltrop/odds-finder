@@ -1,6 +1,6 @@
 #Odds Finder (React, Firebase)
 
-Find event betting odds for major sports using the Cloudbet API (https://www.cloudbet.com/api/) 
+Find event betting odds for major sports using the [Cloudbet API](https://www.cloudbet.com/api/) 
 
 Hosted by Heroku at https://max-b-odds-app.herokuapp.com/.
 
