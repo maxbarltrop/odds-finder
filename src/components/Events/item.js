@@ -16,6 +16,15 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
     return false;
   };
   const FavStar = ({ teamKey, name }) => {
+    const title = () => {
+      if (!signedIn) {
+        return "Sign in to add favorites";
+      }
+      if (favorites.length >= 10) {
+        return "You can only add up to 10 favorites!";
+      }
+      return "Favorite this team";
+    };
     if (isFavorite(teamKey)) {
       return (
         <img
@@ -26,13 +35,11 @@ const EventItem = ({ event, favorites, addFavorite, signedIn }) => {
       );
     }
     return (
-      <Tooltip
-        title={signedIn ? "Favorite This Team" : "Sign in to add favorites"}
-        placement="left"
-        id="fav-tooltip"
-      >
+      <Tooltip title={title()} placement="left" id="fav-tooltip">
         <img
-          className="fav-star unselected"
+          className={`fav-star ${
+            favorites.length >= 10 ? "unhoverable" : "unselected"
+          }`}
           src={Star}
           alt="Select Favorite"
           onClick={() => addFavorite(teamKey, name)}

@@ -28,6 +28,9 @@
   grid-column-gap: 2px;
 }
 
+.event-team:last-child {
+  margin-top: 2px;
+}
 .team-name {
   font-size: 18px;
 }
@@ -41,12 +44,16 @@
 .selected {
   opacity: 0.8;
 }
-.unselected {
+.unselected,
+.unhoverable {
   opacity: 0.25;
 }
 .unselected:hover {
   cursor: pointer;
   opacity: 1;
+}
+.unhoverable:hover {
+  cursor: pointer;
 }
 
 #fav-tooltip {

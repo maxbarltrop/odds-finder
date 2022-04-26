@@ -1,7 +1,7 @@
 import React from "react";
 import USA from "../../assets/images/usa.svg";
 import WORLD from "../../assets/images/world.svg";
-const CompetitionItem = ({ competition, setCompetition }) => {
+const CompetitionItem = ({ competition, setCompetition, isSelected }) => {
   const getIcon = (id) => {
     switch (id) {
       case "usa":
@@ -14,7 +14,12 @@ const CompetitionItem = ({ competition, setCompetition }) => {
     return country.slice(0, 3).toUpperCase();
   };
   return (
-    <div className="competition-list-item item" onClick={setCompetition}>
+    <div
+      className={`competition-list-item item ${
+        isSelected ? "item-selected" : ""
+      }`}
+      onClick={setCompetition}
+    >
       <img
         className="competition-icon icon"
         src={getIcon(competition.country)}

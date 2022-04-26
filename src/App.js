@@ -8,6 +8,7 @@ import SignIn from "./components/SignIn";
 import Header from "./components/Header";
 import Background from "./components/Background";
 import { useState } from "react";
+import About from "./components/About";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBTic5V4Q8RIndKkpBFdRZmTmwCu_Y-CKw",
@@ -24,6 +25,7 @@ const auth = firebase.auth();
 function App() {
   const [noSignIn, setNoSignIn] = useState(false);
   const [user] = useAuthState(auth);
+  const [about, setAbout] = useState(false);
 
   const useWithoutSignIn = () => setNoSignIn(true);
   const canUse = () => {
@@ -37,11 +39,15 @@ function App() {
           auth={auth}
           noSignIn={noSignIn}
           goBack={() => setNoSignIn(false)}
+          about={about}
+          setAbout={(x) => setAbout(x)}
         />
       </section>
       <div className="site-content">
         <section>
-          {canUse() ? (
+          {about ? (
+            <About />
+          ) : canUse() ? (
             <Main user={user} signedIn={!noSignIn} />
           ) : (
             <SignIn auth={auth} useWithoutSignIn={useWithoutSignIn} />

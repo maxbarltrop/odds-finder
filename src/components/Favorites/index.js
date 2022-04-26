@@ -11,6 +11,7 @@ export const Favorites = ({
   removeFavorite,
   signedIn,
   loadingFavorites,
+  favError,
 }) => {
   const [events, setEvents] = useState([]);
   const [error, setError] = useState(null);
@@ -113,6 +114,9 @@ export const Favorites = ({
   function content() {
     if (!signedIn) {
       return "Sign in to add favorites.";
+    }
+    if (favError || error) {
+      return <div className="error">Error loading favorites.</div>;
     }
     if (favorites.length === 0) {
       return "Search for events to add favorites.";

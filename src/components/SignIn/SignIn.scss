@@ -5,7 +5,7 @@
   padding: 30px;
   box-shadow: 2px 2px rgba(100, 100, 100, 0.4);
   margin: 100px auto 100px auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   border: 1px solid rgba(100, 100, 100, 0.2);
 }
 
@@ -26,6 +26,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.sign-in-example {
+  margin-top: 8px;
+  color: rgb(64, 64, 221);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 100;
 }
 
 .sign-in-button:hover {

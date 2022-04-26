@@ -2,7 +2,7 @@ import React from "react";
 import Basketball from "../../assets/images/basketball.svg";
 import Football from "../../assets/images/football.svg";
 import Baseball from "../../assets/images/baseball.svg";
-const SportItem = ({ sport, setSport }) => {
+const SportItem = ({ sport, setSport, isSelected }) => {
   const getIcon = (id) => {
     switch (id) {
       case "american-football":
@@ -16,7 +16,10 @@ const SportItem = ({ sport, setSport }) => {
     }
   };
   return (
-    <div className="sports-list-item item" onClick={setSport}>
+    <div
+      className={`sports-list-item item ${isSelected ? "item-selected" : ""}`}
+      onClick={setSport}
+    >
       <img
         className="sports-icon icon"
         src={getIcon(sport.key)}

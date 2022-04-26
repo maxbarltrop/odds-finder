@@ -39,7 +39,7 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
           setLoading(false);
         })
         .catch((ignore) => {
-          setError("Unable to fetch events. Check Your Connection");
+          setError(true);
           setLoading(false);
         });
     }, 1000);
@@ -56,6 +56,13 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
 
   const renderList = () => {
     if (loading) return <Loader />;
+    if (error) {
+      return (
+        <div className="error">
+          Unable to fetch games. Check your connection.
+        </div>
+      );
+    }
     if (!events) return null;
     return (
       <div className="list events-list">
@@ -75,7 +82,7 @@ const Events = ({ competitionKey, favorites, newFavorite, signedIn }) => {
     <div className="category" id="events-container">
       <div className="category-title">
         <img className="category-icon" src={EVENTS} alt="sports-logo" />
-        Events
+        Games
       </div>
       {renderList()}
     </div>

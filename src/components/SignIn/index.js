@@ -12,11 +12,14 @@ const SignIn = ({ auth, useWithoutSignIn }) => {
   return (
     <>
       <div className="sign-in">
-        <div className="sign-in-header">Choose a Sign-In Option to Begin:</div>
+        <div className="sign-in-header">Sign-In</div>
         <div className="sign-in-break" />
         <div className="sign-in-button" onClick={signInWithGoogle}>
           <img className="sign-in-icon" src={GoogleLogo} alt="google-logo" />
           <span className="sign-in-button-text">Sign in with Google</span>
+        </div>
+        <div className="sign-in-example">
+          Example account: maxboddsapp@gmail.com, Pwd: Test123!
         </div>
         <div className="no-sign-in">
           <div

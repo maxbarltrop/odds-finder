@@ -4,7 +4,7 @@ import CompetitionItem from "./item";
 import STADIUM from "../../assets/images/stadium.svg";
 import Loader from "../Loader";
 
-const Competition = ({ sportKey, setCompetition }) => {
+const Competition = ({ sportKey, setCompetition, selectedKey }) => {
   var [loading, setLoading] = useState(false);
   var [error, setError] = useState(null);
   var [comp, setComp] = useState(null);
@@ -33,10 +33,8 @@ const Competition = ({ sportKey, setCompetition }) => {
           parseCompetitions(result);
           setLoading(false);
         })
-        .catch((err) => {
-          setError(
-            "Unable to fetch competitions. Check your network connection."
-          );
+        .catch((ignore) => {
+          setError(true);
           setLoading(false);
         });
     }, 1000);
@@ -44,6 +42,13 @@ const Competition = ({ sportKey, setCompetition }) => {
 
   const renderList = () => {
     if (loading) return <Loader />;
+    if (error) {
+      return (
+        <div className="error">
+          Unable to fetch competitions. Check your connection.
+        </div>
+      );
+    }
     if (!comp) return null;
 
     return (
@@ -53,6 +58,7 @@ const Competition = ({ sportKey, setCompetition }) => {
             competition={c}
             setCompetition={() => setCompetition(c.key)}
             key={c.key}
+            isSelected={c.key === selectedKey}
           />
         ))}
       </>
@@ -63,7 +69,7 @@ const Competition = ({ sportKey, setCompetition }) => {
     <div className="competitions-container category">
       <div className="category-title">
         <img className="category-icon" src={STADIUM} alt="stadium-icon" />{" "}
-        Competitions
+        Leagues
       </div>
       <div className="competitions-list list">{renderList()}</div>
     </div>

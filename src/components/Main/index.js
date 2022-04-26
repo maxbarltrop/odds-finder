@@ -13,7 +13,7 @@ class Main extends React.Component {
       sport: null,
       competition: null,
       favorites: [],
-      error: null,
+      favError: null,
       loading: false,
     };
     if (this.props.signedIn) {
@@ -29,7 +29,10 @@ class Main extends React.Component {
         this.setState({ favorites: data, loading: false });
       })
       .catch((ignore) => {
-        this.setState({ error: "Unable to fetch favorites", loading: false });
+        this.setState({
+          favError: "Unable to fetch favorites",
+          loading: false,
+        });
       });
   }
 
@@ -42,6 +45,7 @@ class Main extends React.Component {
   }
 
   newFavorite(fav) {
+    if (this.state.favorites.length >= 10) return;
     addFavorite(this.props.user, fav).then((result) => {
       if (result) {
         this.setState({ favorites: [...this.state.favorites, fav] });
@@ -64,12 +68,17 @@ class Main extends React.Component {
           removeFavorite={(f) => this.removeFavorite(f)}
           signedIn={this.props.signedIn}
           loadingFavorites={this.state.loading}
+          favError={this.state.favError}
         />
         <div className="main-container">
-          <Sports setSport={(s) => this.setSport(s)} />
+          <Sports
+            setSport={(s) => this.setSport(s)}
+            selectedKey={this.state.sport ? this.state.sport.key : null}
+          />
           <Competitions
             sportKey={this.state.sport ? this.state.sport.key : null}
             setCompetition={(c) => this.setCompetition(c)}
+            selectedKey={this.state.competition}
           />
           <Events
             competitionKey={this.state.competition}

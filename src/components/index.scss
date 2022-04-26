@@ -7,6 +7,11 @@
 @import "./Sports/Sports.scss";
 @import "./Loader/Loader.scss";
 @import "./Favorites/Favorites.scss";
+@import "./About/About.scss";
+
+a {
+  color: white;
+}
 
 .category {
   border-radius: 10px;
@@ -46,9 +51,14 @@
   min-height: 80px;
 }
 
+.item-selected {
+  border: 4px solid white;
+}
+
 .list {
   overflow-y: auto;
   min-height: 200px;
+  overflow-x: hidden;
 }
 
 .icon {
@@ -58,4 +68,15 @@
 .category-icon {
   width: 50px;
   margin-right: 10px;
+}
+
+.error {
+  margin: 10px;
+  font-size: inherit;
+  color: rgb(173, 3, 3);
+  border-radius: 5px;
+  font-weight: 700;
+  text-align: center;
+  width: 90%;
+  margin: auto;
 }
